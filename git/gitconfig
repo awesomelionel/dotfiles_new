@@ -4,6 +4,7 @@
   filelog = log -u
   fl = log -u
   s = status
+  cm = commit -m
 [user]
 	email = me@awesomelionel.com
 	name = Lino
