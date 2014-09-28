@@ -1,0 +1,141 @@
+" Lionel Tan's .vimrc file
+autocmd!
+execute pathogen#infect()
+call pathogen#helptags()
+
+" setlocal spell spelllang=en_us " Set Spelling
+set nocompatible          " Don't care about vi
+set encoding=utf-8
+filetype off              " Set filetype stuff to on
+filetype plugin indent on
+syntax on                 " Switch on syntax highlighting
+
+"Settings
+let mapleader = ","
+let maplocalleader = "\\"
+
+" Presentation Settings
+set number       " Set Line numbering
+set tabstop=2    " Tabstops are 4 spaces
+set shiftwidth=2 " Number of spaces for indent
+set expandtab
+set nowrap       " Do not wrap words (view)
+set textwidth=0  " Do not wrap word (insert)
+set showcmd      " Show the current command in the lower right corner
+set showmode     " Show the current mode
+set showmatch    " Show matching brackets.
+set ruler        " Line and column number of the cursor positions
+set visualbell   " use visual bell instead of beeps
+set wildmenu     " Make the command-line completion better
+set scrolloff=8  " Keep the cursor 8 lines from the bottom when scolling
+set linespace=3  " Larger Line Height
+set go-=T        " Hides MacVim toolbar
+set hidden       " Set Hidden for LustyExplorer
+set backspace=indent,eol,start
+" Behaviours
+"au FocusLost * :wa       " This means whenever Vim loses focus, it saves the files in the buffer
+set history=100         " Keep some stuff in the history
+set nobackup          " Stop Vim making back up files
+set noswapfile
+set clipboard=unnamed     " Anything copied will be in the clipboard
+" Search Settings
+set incsearch         " Incrementally match the search
+set hlsearch          " Enable search highlighting
+set ignorecase          " set the search scan so that it ignores case when the search is all lower
+set smartcase         " case but recognizes uppercase if it's specified
+
+" setting autoindenting for all filetypes
+set autoindent
+" setting the indenting width for html, xml and php files (you can add more)
+autocmd FileType html,xml,php setlocal expandtab shiftwidth=2 tabstop=2
+" indent the whole file and return to original position
+nmap ,= mzgg=G\`z
+
+" KeyBindings
+"Clear search when you press ,/
+nmap <leader>/ :nohlsearch<CR>
+nmap <CR> :nohlsearch<CR>
+
+" leader w to save 
+nmap <leader>ww :w<CR>
+
+"Change window key remap
+nmap <leader>w <C-w>w 
+noremap <silent> <C-j> <C-W>j
+noremap <silent> <C-k> <C-W>k
+noremap <silent> <C-h> <C-W>h
+noremap <silent> <C-l> <C-W>l
+
+" Edit the vimrc file
+nmap <leader>ev :e $MYVIMRC<CR>
+nmap <leader>sv :so $MYVIMRC<CR>
+
+" Can't be bothered to understand ESC vs <c-c> in normal mode
+nmap <c-c> <esc>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" CUSTOM AUTOCMDS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+augroup vimrcEx
+  " Clear all autocmds in the group
+  autocmd!
+  autocmd FileType text setlocal textwidth=78
+  " Jump to last cursor position unless it's invalid or in an event handler
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+  "for ruby, autoindent with two spaces, always expand tabs
+  autocmd FileType ruby,haml,eruby,yaml,html,javascript,sass,cucumber set ai sw=2 sts=2 et
+
+  autocmd! BufRead,BufNewFile *.sass setfiletype sass 
+
+  autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:&gt;
+  autocmd BufRead *.markdown  set ai formatoptions=tcroqn2 comments=n:&gt;
+
+  " Don't syntax highlight markdown because it's often wrong
+  autocmd! FileType mkd setlocal syn=off
+
+  " *.md is markdown
+  autocmd! BufNewFile,BufRead *.md setlocal ft=
+augroup END
+
+" Netrw view
+let g:netrw_liststyle=3
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" COLOR
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:set t_Co=256 " 256 colors
+:set background=dark
+:colorscheme liquidcarbon
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" STATUS LINE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:set statusline=%<%f\ (%{&ft})\ %-4(%m%)%=%-19(%3l,%02c%03V%)
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: CTRLP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+:nmap ; :CtrlPBuffer<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: NerdCommenter
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>, :call NERDComment(0, "invert")<CR>
+vmap <leader>, :call NERDComment(0, "invert")<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: Emmet
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:user_emmet_expandabbr_key='<C-e>'
+
+" GO auto filetype
+au BufRead,BufNewFile *.go set filetype=go
+au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
+au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
+au Filetype go nnoremap <leader>t :tab split <CR>:exe "GoDef"<CR>
+au Filetype go nnoremap <leader>r :GoRun %<CR>
+
