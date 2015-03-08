@@ -43,6 +43,8 @@ set incsearch         " Incrementally match the search
 set hlsearch          " Enable search highlighting
 set ignorecase          " set the search scan so that it ignores case when the search is all lower
 set smartcase         " case but recognizes uppercase if it's specified
+" Mouse mode
+set mouse=a
 
 " setting autoindenting for all filetypes
 set autoindent
@@ -70,8 +72,28 @@ noremap <silent> <C-l> <C-W>l
 nmap <leader>ev :e $MYVIMRC<CR>
 nmap <leader>sv :so $MYVIMRC<CR>
 
+" Toggle Paste mode
+nmap ,o :set paste!<CR>
+
 " Can't be bothered to understand ESC vs <c-c> in normal mode
 nmap <c-c> <esc>
+
+" Switch Between buffers
+nmap <leader>, <C-^>
+
+" Skipping lines when wrap is set (ONLY USEFUL when wrap is set)
+nnoremap j gj
+nnoremap k gk
+
+" Unwanted keys
+nnoremap <F1> <nop>
+" ex mode
+nnoremap Q <nop>
+" man page
+nnoremap K <nop>
+
+" Remove intro text
+set shortmess+=I
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CUSTOM AUTOCMDS
@@ -99,17 +121,21 @@ augroup vimrcEx
 
   " *.md is markdown
   autocmd! BufNewFile,BufRead *.md setlocal ft=
+
+  " ember hbs
+  autocmd! BufRead,BufNewFile *.hbs setfiletype html
 augroup END
 
 " Netrw view
-let g:netrw_liststyle=3
+" let g:netrw_liststyle=3
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-:set t_Co=256 " 256 colors
-:set background=dark
-:colorscheme liquidcarbon
+set t_Co=256 " 256 colors
+set term=xterm-256color
+set background=dark
+colorscheme grb256
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
@@ -124,8 +150,8 @@ let g:netrw_liststyle=3
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: NerdCommenter
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>, :call NERDComment(0, "invert")<CR>
-vmap <leader>, :call NERDComment(0, "invert")<CR>
+nmap <leader>m :call NERDComment(0, "invert")<CR>
+vmap <leader>m :call NERDComment(0, "invert")<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: Emmet
@@ -138,4 +164,10 @@ au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
 au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>t :tab split <CR>:exe "GoDef"<CR>
 au Filetype go nnoremap <leader>r :GoRun %<CR>
+au Filetype go nnoremap <leader>f :GoFmt %<CR>
 
+
+""""" EXPERIMENTAL """""
+"" Change cursor shape in TMUX ITerm2
+let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
