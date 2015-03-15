@@ -148,10 +148,12 @@ colorscheme grb256
 :nmap ; :CtrlPBuffer<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGIN: NerdCommenter
+" PLUGIN: NERDTREE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <leader>m :call NERDComment(0, "invert")<CR>
-vmap <leader>m :call NERDComment(0, "invert")<CR>
+nmap ,nt :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+autocmd VimEnter * NERDTree
+autocmd VimEnter * wincmd p
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: Emmet
