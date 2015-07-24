@@ -5,6 +5,11 @@
   fl = log -u
   s = status
   cm = commit -m
+  aa = add -A
+  cnb = checkout -b
+  co = checkout
 [user]
 	email = me@awesomelionel.com
 	name = Lino
+[core]
+	excludesfile = /Users/Lionel/.gitignore_global
