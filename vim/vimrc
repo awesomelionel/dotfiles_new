@@ -184,22 +184,24 @@ colorscheme grb256
 " PLUGIN: CTRLP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :nmap ; :CtrlPBuffer<CR>
-:nmap <space><space> :CtrlP<CR>
+:nmap <space><space> :CtrlP<CR><F5>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: NERDTREE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap ,nt :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
-autocmd VimEnter * NERDTree
-autocmd VimEnter * wincmd p
+"autocmd VimEnter * NERDTree
+"autocmd VimEnter * wincmd p
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: Emmet
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_expandabbr_key='<C-e>'
 
-" GO auto filetype
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: VIMGO
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead,BufNewFile *.go set filetype=go
 au Filetype go nnoremap <leader>v :vsp <CR>:exe "GoDef" <CR>
 au Filetype go nnoremap <leader>s :sp <CR>:exe "GoDef"<CR>
@@ -208,7 +210,6 @@ au Filetype go nnoremap <leader>r :GoRun %<CR>
 au Filetype go nnoremap <leader>i :GoInstall %<CR>
 au Filetype go nnoremap <leader>b :GoBuild %<CR>
 au Filetype go nnoremap <leader>f :GoFmt %<CR>
-
 
 """"" EXPERIMENTAL """""
 "" Change cursor shape in TMUX ITerm2

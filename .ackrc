@@ -12,3 +12,8 @@
 --type-set=RDOC=rdoc
 --type-set=slim=slim
 
+# ignore
+--ignore-dir=log
+--ignore-dir=public/assets
+--ignore-file=is:tags
+
