@@ -9,6 +9,7 @@ set encoding=utf-8
 filetype off              " Set filetype stuff to on
 filetype plugin indent on
 syntax on                 " Switch on syntax highlighting
+set shell=/bin/sh
 
 "Settings
 let mapleader = ","
@@ -210,6 +211,14 @@ au Filetype go nnoremap <leader>r :GoRun %<CR>
 au Filetype go nnoremap <leader>i :GoInstall %<CR>
 au Filetype go nnoremap <leader>b :GoBuild %<CR>
 au Filetype go nnoremap <leader>f :GoFmt %<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: RSpec.vim
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
 
 """"" EXPERIMENTAL """""
 "" Change cursor shape in TMUX ITerm2
