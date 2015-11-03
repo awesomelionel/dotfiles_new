@@ -13,3 +13,7 @@
 	name = Lino
 [core]
 	excludesfile = /Users/Lionel/.gitignore_global
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
