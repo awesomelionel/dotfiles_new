@@ -130,7 +130,7 @@ augroup vimrcEx
   autocmd! FileType mkd setlocal syn=off
 
   " *.md is markdown
-  autocmd! BufNewFile,BufRead *.md setlocal ft=
+  autocmd! BufNewFile,BufRead *.md setlocal ft=markdown
 
   " ember hbs
   autocmd! BufRead,BufNewFile *.hbs setfiletype html
@@ -186,6 +186,10 @@ colorscheme grb256
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :nmap ; :CtrlPBuffer<CR>
 :nmap <space><space> :CtrlP<CR><F5>
+set wildignore+=tmp/*
+set wildignore+=node_modules/*
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGIN: NERDTREE
@@ -219,6 +223,11 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGIN: Syntastic React
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_javascript_checkers = ['eslint']
 
 """"" EXPERIMENTAL """""
 "" Change cursor shape in TMUX ITerm2
