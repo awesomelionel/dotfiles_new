@@ -186,8 +186,8 @@ colorscheme grb256
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 :nmap ; :CtrlPBuffer<CR>
 :nmap <space><space> :CtrlP<CR><F5>
-set wildignore+=tmp/*
-set wildignore+=node_modules/*
+set wildignore+=*/tmp/*
+set wildignore+=*/node_modules/*
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 
 
