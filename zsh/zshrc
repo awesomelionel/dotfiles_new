@@ -86,7 +86,7 @@ bindkey '^h' backward-delete-char
 
 source $ZSH/oh-my-zsh.sh
 # Customize to your needs...
-export PATH="$PATH:/usr/local/bin:/usr/local/git/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$PATH:/usr/local/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/bin:/bin"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export JAVA_HOME="/usr/libexec/java_home"
 export DOCKER_HOST=tcp://192.168.59.103:2375
@@ -101,3 +101,4 @@ eval "$(docker-machine env default)"
 # Clear unused images
 alias dockerrmi="docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi"
 alias dockerclear="docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm"
+
