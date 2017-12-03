@@ -97,8 +97,8 @@ export PATH=$PATH:$GOPATH/bin
 export EDITOR='vim'
 
 #Docker
-eval "$(docker-machine env default)"
+#eval "$(docker-machine env default)"
 # Clear unused images
-alias dockerrmi="docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi"
-alias dockerclear="docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm"
+#alias dockerrmi="docker images | grep '<none>' | awk '{print $3}' | xargs docker rmi"
+#alias dockerclear="docker ps -a | grep 'weeks ago' | awk '{print $1}' | xargs --no-run-if-empty docker rm"
 
