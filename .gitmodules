@@ -58,3 +58,9 @@
 [submodule "vim/bundle/vim-rails"]
 	path = vim/bundle/vim-rails
 	url = https://github.com/tpope/vim-rails.git
+[submodule "vim/bundle/goyo"]
+	path = vim/bundle/goyo
+	url = https://github.com/junegunn/goyo.vim
+[submodule "vim/bundle/seoul256"]
+	path = vim/bundle/seoul256
+	url = https://github.com/junegunn/seoul256.vim
