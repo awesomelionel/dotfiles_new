@@ -1,7 +1,7 @@
 " Lionel Tan's .vimrc file
 autocmd!
-execute pathogen#infect()
-call pathogen#helptags()
+" execute pathogen#infect()
+" call pathogen#helptags()
 
 " setlocal spell spelllang=en_us " Set Spelling
 set nocompatible          " Don't care about vi
@@ -174,7 +174,6 @@ map <leader>n :call RenameFile()<cr>
 set t_Co=256 " 256 colors
 set term=xterm-256color
 set background=dark
-colorscheme grb256
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " STATUS LINE
