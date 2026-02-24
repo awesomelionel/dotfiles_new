@@ -24,7 +24,7 @@ ARGF.each do |a|
       v[:state]   = $~[2]
       v[:time]    = $~[3]
     else
-      v[:percent] = "0"
+      v[:percent] = 0
       v[:state]   = "unknown"
       v[:time]    = "unknown"
     end
