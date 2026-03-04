@@ -72,17 +72,19 @@ export PATH="$PATH:$GOPATH/bin"
 
 # Python (if needed)
 # export PATH="$HOME/.local/bin:$PATH"
+eval "$(direnv hook zsh)"
+
 
 # Rust (if needed)
 # export PATH="$HOME/.cargo/bin:$PATH"
 
 # -----------------------------------------------------------------------------
-# Ruby Configuration (chruby)
+# Ruby Configuration (chruby) - commented out, using asdf
 # -----------------------------------------------------------------------------
-if [ -f /opt/homebrew/opt/chruby/share/chruby/chruby.sh ]; then
-  source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-  source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-fi
+#if [ -f /opt/homebrew/opt/chruby/share/chruby/chruby.sh ]; then
+#  source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
+#  source /opt/homebrew/opt/chruby/share/chruby/auto.sh
+#fi
 
 # -----------------------------------------------------------------------------
 # History Configuration
@@ -286,9 +288,15 @@ eval "$(atuin init zsh)"
 # Install: brew install thefuck
 eval $(thefuck --alias)
 
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # -----------------------------------------------------------------------------
 # Performance Monitoring (optional - comment out if not needed)
 # -----------------------------------------------------------------------------
 # Uncomment to measure shell startup time
 # zmodload zsh/zprof
 # Add at the end of file: zprof
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+. "$(brew --prefix asdf)/libexec/asdf.sh"

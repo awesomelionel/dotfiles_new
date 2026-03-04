@@ -9,6 +9,10 @@ plug    = "⚡"
 per_star = 100/star_count
 
 v= Hash.new()
+v[:percent] = 0
+v[:state]   = "unknown"
+v[:time]    = "unknown"
+v[:source]  = ""
 
 ARGF.each do |a|
   if a.start_with? "Now"
@@ -18,8 +22,8 @@ ARGF.each do |a|
     else
       v[:source] = ""
     end
-  elsif a.start_with?" -"
-    if a =~ /(\d{1,3})%;\s(.*);\s(\d:\d{2}|\(no estimate\))/
+  elsif a =~ /^\s*-/
+    if a =~ /(\d{1,3})%;\s([^;]*);\s(\d:\d{2}|\(no estimate\))(?:\sremaining)?(?:\s.*)?/
       v[:percent] = $~[1].to_i
       v[:state]   = $~[2]
       v[:time]    = $~[3]
